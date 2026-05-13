@@ -1,0 +1,19 @@
+meta {
+  name: Get faqs
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/admin/settings/faqs
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

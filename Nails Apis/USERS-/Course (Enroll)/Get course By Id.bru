@@ -1,0 +1,23 @@
+meta {
+  name: Get course By Id
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/v1/courses/:id/preview
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 7
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

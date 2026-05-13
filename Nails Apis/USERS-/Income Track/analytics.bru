@@ -1,0 +1,100 @@
+meta {
+  name: analytics
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/v1/finance/analytics
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: analytics
+  
+  request: {
+    url: {{base_url}}/v1/finance/analytics
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Server: nginx/1.29.4
+      Content-Type: application/json
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      X-Powered-By: PHP/8.4.16
+      Cache-Control: no-cache, private
+      Date: Tue, 20 Jan 2026 05:15:29 GMT
+      X-RateLimit-Limit: 60
+      X-RateLimit-Remaining: 58
+      Access-Control-Allow-Origin: *
+      Content-Encoding: gzip
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "ok": true,
+            "message": "Analytics fetched.",
+            "data": {
+                "cards": {
+                    "total_income": 10000,
+                    "total_expense": 2500,
+                    "profit": 7500,
+                    "loss": 0
+                },
+                "chart_data": [
+                    {
+                        "month_year": "2025-08",
+                        "month_name": "Aug",
+                        "total_income": 0
+                    },
+                    {
+                        "month_year": "2025-09",
+                        "month_name": "Sep",
+                        "total_income": 0
+                    },
+                    {
+                        "month_year": "2025-10",
+                        "month_name": "Oct",
+                        "total_income": 0
+                    },
+                    {
+                        "month_year": "2025-11",
+                        "month_name": "Nov",
+                        "total_income": 0
+                    },
+                    {
+                        "month_year": "2025-12",
+                        "month_name": "Dec",
+                        "total_income": 0
+                    },
+                    {
+                        "month_year": "2026-01",
+                        "month_name": "Jan",
+                        "total_income": 10000
+                    }
+                ]
+            }
+        }
+      '''
+    }
+  }
+}

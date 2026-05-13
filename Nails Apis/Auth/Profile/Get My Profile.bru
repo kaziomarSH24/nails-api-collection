@@ -1,0 +1,28 @@
+meta {
+  name: Get My Profile
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/profile/me
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{auth_token}}
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Gets all information (including roles and permissions) for the logged-in user.
+}

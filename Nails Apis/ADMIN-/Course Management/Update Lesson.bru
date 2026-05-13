@@ -1,0 +1,35 @@
+meta {
+  name: Update Lesson
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{base_url}}/v1/admin/courses/:courseId/lessons/:lessonId
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  courseId: 33
+  lessonId: 81
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  title:  Morning Yoga Session
+  description:  Relaxing yoga for flexibility
+  video_type:  upload
+  video_path: courses/videos/2026-e-developer-demand-kmbe-programming-hero-perspective-ii-abdur-rakib-ii-jhankar-mahbub-abdur-rakib-1080p-h264_1768619720.mp4
+  duration:  900
+  is_free_preview:  0
+  ~video_url: 
+  ~sort_order:  1
+}
+
+settings {
+  encodeUrl: true
+}

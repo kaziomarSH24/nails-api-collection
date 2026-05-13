@@ -1,0 +1,19 @@
+meta {
+  name: Get only category list
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/admin/product/categories
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

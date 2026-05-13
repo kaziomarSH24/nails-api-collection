@@ -1,0 +1,23 @@
+meta {
+  name: Get Enrolled course by Id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/courses/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 22
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

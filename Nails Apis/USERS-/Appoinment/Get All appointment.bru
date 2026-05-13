@@ -1,0 +1,26 @@
+meta {
+  name: Get All appointment
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/appointments
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~filter[status]: upcoming
+  ~filter[date]: 2026-01-21
+  ~sort: -appointment_at
+  ~filter[client_name]: update
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

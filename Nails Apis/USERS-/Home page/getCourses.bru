@@ -1,0 +1,35 @@
+meta {
+  name: getCourses
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/v1/all/courses?type=enrolled
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  type: enrolled
+  ~per_page: 5
+  ~page: 2
+  ~search: Sit
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  type:  expense
+  amount:  2500
+  category:  Project Payment
+  record_date:  2026-01-18
+  client_or_vendor_name:  ABC Corporation
+  notes:  January development payment
+}
+
+settings {
+  encodeUrl: true
+}

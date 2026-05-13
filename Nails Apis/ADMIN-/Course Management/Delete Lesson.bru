@@ -1,0 +1,24 @@
+meta {
+  name: Delete Lesson
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{base_url}}/v1/admin/courses/:courseId/lessons/:lessonId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  courseId: 7
+  lessonId: 5
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

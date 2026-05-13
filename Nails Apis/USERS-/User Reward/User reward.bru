@@ -1,0 +1,203 @@
+meta {
+  name: User reward
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/user/rewards?per_page=10
+  body: none
+  auth: bearer
+}
+
+params:query {
+  per_page: 10
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: User reward
+  
+  request: {
+    url: {{base_url}}/v1/user/rewards?per_page=10
+    method: GET
+    mode: none
+    params:query: {
+      per_page: 10
+    }
+  }
+  
+  response: {
+    headers: {
+      Server: nginx/1.29.4
+      Content-Type: application/json
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      X-Powered-By: PHP/8.4.17
+      Cache-Control: no-cache, private
+      Date: Thu, 29 Jan 2026 02:24:11 GMT
+      X-RateLimit-Limit: 60
+      X-RateLimit-Remaining: 58
+      Access-Control-Allow-Origin: *
+      Content-Encoding: gzip
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "summary": {
+                "total_points": 329,
+                "monetary_value": 3.29,
+                "redeem_rate": 100
+            },
+            "stats": {
+                "product_points_earned": 632,
+                "course_points_earned": 110
+            },
+            "history": {
+                "data": [
+                    {
+                        "id": 10,
+                        "title": "Redeemed for Order #35",
+                        "points": -10,
+                        "type": "redeem",
+                        "date": "4 days ago",
+                        "created_at": "2026-01-24T06:44:30.000000Z",
+                        "source": "product"
+                    },
+                    {
+                        "id": 11,
+                        "title": "Earned from Order #35",
+                        "points": 158,
+                        "type": "earn",
+                        "date": "4 days ago",
+                        "created_at": "2026-01-24T06:44:30.000000Z",
+                        "source": "product"
+                    },
+                    {
+                        "id": 8,
+                        "title": "Redeemed for Order #34",
+                        "points": -400,
+                        "type": "redeem",
+                        "date": "4 days ago",
+                        "created_at": "2026-01-24T06:42:48.000000Z",
+                        "source": "product"
+                    },
+                    {
+                        "id": 9,
+                        "title": "Earned from Order #34",
+                        "points": 158,
+                        "type": "earn",
+                        "date": "4 days ago",
+                        "created_at": "2026-01-24T06:42:48.000000Z",
+                        "source": "product"
+                    },
+                    {
+                        "id": 7,
+                        "title": "Earned from Order #33",
+                        "points": 158,
+                        "type": "earn",
+                        "date": "4 days ago",
+                        "created_at": "2026-01-24T06:41:23.000000Z",
+                        "source": "product"
+                    },
+                    {
+                        "id": 6,
+                        "title": "Earned from Order #24",
+                        "points": 158,
+                        "type": "earn",
+                        "date": "6 days ago",
+                        "created_at": "2026-01-22T10:48:31.000000Z",
+                        "source": "product"
+                    },
+                    {
+                        "id": 4,
+                        "title": "Earned from Course Enrollment #10",
+                        "points": 100,
+                        "type": "earn",
+                        "date": "6 days ago",
+                        "created_at": "2026-01-22T10:44:40.000000Z",
+                        "source": "course"
+                    },
+                    {
+                        "id": 3,
+                        "title": "Earned from Course Enrollment #9",
+                        "points": 4,
+                        "type": "earn",
+                        "date": "6 days ago",
+                        "created_at": "2026-01-22T10:43:12.000000Z",
+                        "source": "course"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Earned from Course Enrollment #8",
+                        "points": 3,
+                        "type": "earn",
+                        "date": "6 days ago",
+                        "created_at": "2026-01-22T10:40:36.000000Z",
+                        "source": "course"
+                    },
+                    {
+                        "id": 1,
+                        "title": "Earned from Course Enrollment #7",
+                        "points": 3,
+                        "type": "earn",
+                        "date": "6 days ago",
+                        "created_at": "2026-01-22T10:32:42.000000Z",
+                        "source": "course"
+                    }
+                ],
+                "links": {
+                    "first": "http://10.10.10.55:90/api/v1/user/rewards?page=1",
+                    "last": "http://10.10.10.55:90/api/v1/user/rewards?page=1",
+                    "prev": null,
+                    "next": null
+                },
+                "meta": {
+                    "current_page": 1,
+                    "from": 1,
+                    "last_page": 1,
+                    "links": [
+                        {
+                            "url": null,
+                            "label": "&laquo; Previous",
+                            "page": null,
+                            "active": false
+                        },
+                        {
+                            "url": "http://10.10.10.55:90/api/v1/user/rewards?page=1",
+                            "label": "1",
+                            "page": 1,
+                            "active": true
+                        },
+                        {
+                            "url": null,
+                            "label": "Next &raquo;",
+                            "page": null,
+                            "active": false
+                        }
+                    ],
+                    "path": "http://10.10.10.55:90/api/v1/user/rewards",
+                    "per_page": 10,
+                    "to": 10,
+                    "total": 10
+                }
+            }
+        }
+      '''
+    }
+  }
+}

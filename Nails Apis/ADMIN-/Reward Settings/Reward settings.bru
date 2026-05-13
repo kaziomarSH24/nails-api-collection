@@ -1,0 +1,24 @@
+meta {
+  name: Reward Settings
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/v1/admin/reward-settings
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  redeem_points_per_usd: 100
+  earn_points_per_usd: 0.1
+}
+
+settings {
+  encodeUrl: true
+}

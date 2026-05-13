@@ -1,0 +1,23 @@
+meta {
+  name: Delete record
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{base_url}}/v1/finance-records/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 18
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

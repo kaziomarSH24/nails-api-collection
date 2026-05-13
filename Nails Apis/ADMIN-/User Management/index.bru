@@ -1,0 +1,24 @@
+meta {
+  name: index
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/admin/users
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  redeem_points_per_usd: 20
+  earn_points_per_usd: 1
+}
+
+settings {
+  encodeUrl: true
+}

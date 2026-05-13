@@ -1,0 +1,23 @@
+meta {
+  name: Delete Appointment
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{base_url}}/v1/appointments/:appointmentId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  appointmentId: 6
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

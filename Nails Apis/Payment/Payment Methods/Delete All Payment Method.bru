@@ -1,0 +1,23 @@
+meta {
+  name: Delete All Payment Method
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{base_url}}/v1/payment/payment-methods
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Deletes a specific payment method from the user's account. Replace `pm_...` with the actual Payment Method ID.
+}

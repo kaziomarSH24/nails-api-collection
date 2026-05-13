@@ -1,0 +1,23 @@
+meta {
+  name: delete album
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{base_url}}/v1/mood-boards/:albumId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  albumId: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

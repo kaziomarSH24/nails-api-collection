@@ -1,0 +1,29 @@
+meta {
+  name: create inventory
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/inventory
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  item_name: {{$randomLoremSentence}}
+  source: external
+  image: @file(/C:/Users/tanvir/Downloads/success_7518748 1 (1).png)
+  current_quantity: 5
+  reorder_threshold: 2
+  reminder_frequency_days: 15
+  price: 
+}
+
+settings {
+  encodeUrl: true
+}

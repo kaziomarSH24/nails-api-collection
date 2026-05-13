@@ -1,0 +1,19 @@
+meta {
+  name: all courses
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/courses/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

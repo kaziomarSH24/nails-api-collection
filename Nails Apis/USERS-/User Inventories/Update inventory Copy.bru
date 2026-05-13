@@ -1,0 +1,30 @@
+meta {
+  name: Update inventory Copy
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{base_url}}/v1/inventory/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  current_quantity: 12
+  reminder_frequency_days: 7
+  ~item_name: 
+  ~reorder_threshold: 
+}
+
+settings {
+  encodeUrl: true
+}

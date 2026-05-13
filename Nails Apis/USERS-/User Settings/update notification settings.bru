@@ -1,0 +1,24 @@
+meta {
+  name: update notification settings
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/v1/settings/notifications
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  appointment_reminder: 1
+  new_courses: 0
+}
+
+settings {
+  encodeUrl: true
+}

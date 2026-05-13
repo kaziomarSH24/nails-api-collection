@@ -1,0 +1,19 @@
+meta {
+  name: save card (using link)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/v1/payment/setup-session
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,31 @@
+meta {
+  name: Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/auth/register
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  name: Omar Faruk
+  email: kaziomar3@yopmail.com
+  password: 11111111
+  password_confirmation: 11111111
+  dob: 1987-01-25
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Registers a new user and sends a verification OTP/Link.
+}

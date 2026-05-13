@@ -1,0 +1,25 @@
+meta {
+  name: Update Faqs
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{base_url}}/v1/admin/settings/faqs/8
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  question: {{$randomLoremLines}}
+  answer: {{$randomLoremSentence}}
+  is_active: 1
+}
+
+settings {
+  encodeUrl: true
+}

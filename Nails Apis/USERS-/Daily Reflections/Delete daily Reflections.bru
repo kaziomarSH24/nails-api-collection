@@ -1,0 +1,23 @@
+meta {
+  name: Delete daily Reflections
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{base_url}}/v1/daily-reflections/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 3
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

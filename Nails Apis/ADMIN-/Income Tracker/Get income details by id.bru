@@ -1,0 +1,27 @@
+meta {
+  name: Get income details by id
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/admin/income-report/:id
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~period: last_month
+}
+
+params:path {
+  id: 42
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

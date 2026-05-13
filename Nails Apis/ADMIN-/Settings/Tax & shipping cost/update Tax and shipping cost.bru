@@ -1,0 +1,24 @@
+meta {
+  name: update Tax and shipping cost
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/admin/settings/tax-shipping
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  shipping_cost: 20
+  tax_percentage: 3
+}
+
+settings {
+  encodeUrl: true
+}

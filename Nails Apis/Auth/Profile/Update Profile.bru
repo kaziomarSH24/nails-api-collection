@@ -1,0 +1,37 @@
+meta {
+  name: Update Profile
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseIP_url}}/v1/profile/update
+  body: multipartForm
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{auth_token}}
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  name: Test User Updated
+  avatar: @file(/C:/Users/bdCalling/Downloads/ChatGPT Image Jan 3, 2026, 12_06_45 PM.png)
+  dob: 1999-07-05
+  ~phone: 01754563214
+  ~email: user@yopmail.com
+  ~address: 
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Updates the user's profile (name, avatar).
+}

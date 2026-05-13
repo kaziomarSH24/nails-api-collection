@@ -1,0 +1,145 @@
+meta {
+  name: Video Upload
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{base_url}}/v1/admin/courses/upload-video
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  "check documentation": check documentation
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  # Video Upload Endpoint
+  
+  This endpoint handles video file uploads using the **Resumable.js** library for chunked file uploads. This allows large video files to be uploaded reliably with resume capability.
+  
+  ## Implementation
+  
+  ### Required Library
+  
+  You need to use **Resumable.js** for uploading videos to this endpoint. This library handles chunked uploads and provides resume functionality if the upload is interrupted.
+  
+  ### Configuration
+  
+  ``` javascript
+  const API_URL = "{{ url('/api/v1/admin/courses/upload-video') }}";
+  var r = new Resumable({
+      target: API_URL,
+      query: {},
+      fileType: ['mp4', 'mov', 'avi', 'mkv'],
+      chunkSize: 2 * 1024 * 1024, // 2MB chunks
+      headers: {
+          'Accept': 'application/json'
+      },
+      testChunks: false,
+      throttleProgressCallbacks: 1,
+      fileParameterName: 'video_file'
+  });
+  
+   ```
+  
+  ### Configuration Parameters
+  
+  | Parameter | Value | Description |
+  | --- | --- | --- |
+  | `target` | `/api/v1/admin/courses/upload-video` | The upload endpoint URL |
+  | `fileType` | `['mp4', 'mov', 'avi', 'mkv']` | Accepted video file formats |
+  | `chunkSize` | `2 \\\\\* 1024 \\\\\* 1024` (2MB) | Size of each upload chunk |
+  | `fileParameterName` | `video_file` | The form field name for the video file |
+  | `testChunks` | `false` | Disable chunk testing before upload |
+  | `throttleProgressCallbacks` | `1` | Progress update frequency |
+  
+  ### Supported Video Formats
+  
+  - **MP4** (.mp4)
+      
+  - **MOV** (.mov)
+      
+  - **AVI** (.avi)
+      
+  - **MKV** (.mkv)
+      
+  
+  ### Headers Required
+  
+  ```
+  Accept: application/json
+  
+   ```
+  
+  ### How It Works
+  
+  1. **Chunked Upload**: Large video files are split into 2MB chunks
+      
+  2. **Sequential Upload**: Each chunk is uploaded sequentially to the server
+      
+  3. **Resume Capability**: If upload fails, it can resume from the last successful chunk
+      
+  4. **Progress Tracking**: Monitor upload progress in real-time
+      
+  
+  ### Implementation Example
+  
+  ``` javascript
+  // Initialize Resumable
+  const API_URL = "{{ url('/api/v1/admin/courses/upload-video') }}";
+  var r = new Resumable({
+      target: API_URL,
+      query: {},
+      fileType: ['mp4', 'mov', 'avi', 'mkv'],
+      chunkSize: 2 * 1024 * 1024,
+      headers: {
+          'Accept': 'application/json'
+      },
+      testChunks: false,
+      throttleProgressCallbacks: 1,
+      fileParameterName: 'video_file'
+  });
+  // Assign browse button
+  r.assignBrowse(document.getElementById('browseButton'));
+  // Handle file added event
+  r.on('fileAdded', function(file, event){
+      console.log('File added:', file.fileName);
+      r.upload(); // Start upload
+  });
+  // Handle upload progress
+  r.on('fileProgress', function(file){
+      console.log('Progress:', Math.floor(file.progress() * 100) + '%');
+  });
+  // Handle upload success
+  r.on('fileSuccess', function(file, message){
+      console.log('Upload complete:', message);
+  });
+  // Handle upload error
+  r.on('fileError', function(file, message){
+      console.error('Upload error:', message);
+  });
+  
+   ```
+  
+  ### Important Notes
+  
+  ⚠️ **Authentication Required**: Make sure to include proper authentication token in your headers (e.g., Bearer token)
+  
+  ⚠️ **File Size**: Large files are automatically split into 2MB chunks for reliable upload
+  
+  ⚠️ **Network Issues**: If upload is interrupted, Resumable.js can resume from the last successful chunk
+  
+  ### Testing in Postman
+  
+  For testing this endpoint in Postman, you can use form-data with a file field named `video_file`. However, note that Postman doesn't support chunked uploads like Resumable.js does, so you'll be uploading the entire file at once.
+}

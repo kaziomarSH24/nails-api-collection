@@ -1,0 +1,19 @@
+meta {
+  name: Get terms and conditions
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/v1/admin/settings/terms
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,66 @@
+meta {
+  name: Product checkout
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/shop/checkout
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~per_page: 
+  ~filter[title]: The Complete
+  ~sort: -created_at
+  ~variants: 1
+  ~group_by_category: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  first_name: Kazi Omar
+  last_name: Faruk
+  phone: 01701029783
+  email: kaziomar@yopmail.com
+  items[0][variant_id]: 47795148423393
+  items[0][quantity]:  3
+  shipping_address[address1]:  House 12, Road 5, Dhanmondi
+  shipping_address[zip]: HA2 6AE
+  shipping_address[city]:  Dhaka
+  points_to_redeem: 300
+  ~items[1][variant_id]:  205
+  ~items[1][quantity]:  1
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  {  
+  "first_name": "Kazi Omar",  
+  "last_name": "Faruk",  
+  "phone": "01701029783",  
+  "email": "[kaziomar@yopmail.com](https://mailto:kaziomar@yopmail.com)",  
+  "items": \[  
+  {  
+  "variant_id": 47795148423393,  
+  "quantity": 2  
+  },  
+  {  
+  "variant_id": 205,  
+  "quantity": 1  
+  }  
+  \],  
+  "shipping_address": {  
+  "address1": "House 12, Road 5, Dhanmondi",  
+  "zip": "HA2 6AE",  
+  "city": "Dhaka"  
+  }  
+  }
+}

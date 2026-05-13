@@ -1,0 +1,37 @@
+meta {
+  name: User Suspend
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{base_url}}/v1/admin/users/:userId/toggle-suspend
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  userId: 2
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  client_name:  John Doe
+  client_phone:  +8801712345678
+  service_type:  Hair Cut & Styling
+  appointment_at:  2026-01-21 15:30:00
+  is_reminder_on:  1
+  notes:  First time client, prefers evening slot
+  ~reminder_minutes_before: 
+}
+
+settings {
+  encodeUrl: true
+}

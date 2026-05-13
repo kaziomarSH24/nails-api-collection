@@ -1,0 +1,23 @@
+meta {
+  name: Delete Inventory
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/v1/inventory/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Add Payment Method
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/v1/payment/payment-methods
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+body:multipart-form {
+  payment_method_id: 
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Adds a new payment method (e.g., a credit card) to the user's account.
+}

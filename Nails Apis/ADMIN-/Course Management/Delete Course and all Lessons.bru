@@ -1,0 +1,71 @@
+meta {
+  name: Delete Course and all Lessons
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{base_url}}/v1/admin/courses/:courseId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  courseId: 15
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  # Delete Course and All Lessons
+  
+  ## Overview
+  This endpoint permanently deletes a course and all its associated lessons from the system. This is a destructive operation that cannot be undone.
+  
+  ## Path Parameters
+  
+  | Parameter | Type | Required | Description |
+  |-----------|------|----------|-------------|
+  | `courseId` | integer | Yes | The unique identifier of the course to be deleted |
+  
+  ## Authentication
+  
+  This endpoint requires **Super Admin** authentication. Include the super admin token in the request headers:
+  
+  ```
+  Authorization: Bearer {{super_adminToken}}
+  ```
+  
+  ## Response Codes
+  
+  | Status Code | Description |
+  |-------------|-------------|
+  | `200 OK` | Course and all associated lessons successfully deleted |
+  | `401 Unauthorized` | Missing or invalid authentication token |
+  | `403 Forbidden` | User does not have super admin privileges |
+  | `404 Not Found` | Course with the specified ID does not exist |
+  | `500 Internal Server Error` | Server error occurred during deletion |
+  
+  ## Important Notes
+  
+  ⚠️ **Warning: This is a destructive operation**
+  - This action permanently deletes the course and **all associated lessons**
+  - Deleted data cannot be recovered
+  - Ensure you have proper backups before executing this operation
+  - Only super administrators should have access to this endpoint
+  - Consider implementing soft deletes or archiving as an alternative to permanent deletion
+  
+  ## Example Usage
+  
+  ```
+  DELETE {{baseIP_url}}/v1/admin/courses/1
+  ```
+  
+  This will delete the course with ID `1` and all its lessons.
+}

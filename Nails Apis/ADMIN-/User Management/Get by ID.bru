@@ -1,0 +1,28 @@
+meta {
+  name: Get by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/admin/users/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  id: 19
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  redeem_points_per_usd: 20
+  earn_points_per_usd: 1
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Consume
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{base_url}}/v1/inventory/:id/use
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  id: 9
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  quantity: 1
+}
+
+settings {
+  encodeUrl: true
+}

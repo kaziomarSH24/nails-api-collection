@@ -1,0 +1,25 @@
+meta {
+  name: Store FAQ
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/admin/settings/faqs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  question: {{$randomLoremLines}}
+  answer: {{$randomLoremSentence}}
+  is_active: 1
+}
+
+settings {
+  encodeUrl: true
+}

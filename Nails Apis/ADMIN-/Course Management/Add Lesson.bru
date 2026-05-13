@@ -1,0 +1,34 @@
+meta {
+  name: Add Lesson
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{base_url}}/v1/admin/courses/:courseId/lessons
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  courseId: 7
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  title:  Morning Yoga Session
+  description:  Relaxing yoga for flexibility
+  video_type: url
+  video_url: https://youtu.be/0rDIt3dlrV4?si=TRdiWOV9qqxnZIuU
+  duration: 3000000
+  is_free_preview: 1
+  sort_order:  1
+  ~video_path: courses/videos/vid20251107110934_1768647331.mp4
+}
+
+settings {
+  encodeUrl: true
+}

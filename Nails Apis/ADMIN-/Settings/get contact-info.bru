@@ -1,0 +1,19 @@
+meta {
+  name: get contact-info
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{base_url}}/v1/admin/settings/contact-info
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

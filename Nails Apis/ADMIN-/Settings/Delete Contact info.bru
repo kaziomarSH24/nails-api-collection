@@ -1,0 +1,23 @@
+meta {
+  name: Delete Contact info
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{base_url}}/v1/admin/settings/contact-info?platform=Enim aute sit persp
+  body: none
+  auth: bearer
+}
+
+params:query {
+  platform: Enim aute sit persp
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

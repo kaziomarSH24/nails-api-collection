@@ -1,0 +1,25 @@
+meta {
+  name: get all album
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/v1/mood-boards?filter[name]&sort=-created_at
+  body: none
+  auth: bearer
+}
+
+params:query {
+  filter[name]: 
+  sort: -created_at
+  ~include: images,imagesCount,imagesExists
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

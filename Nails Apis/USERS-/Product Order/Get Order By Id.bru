@@ -1,0 +1,35 @@
+meta {
+  name: Get Order By Id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/v1/shop/orders/22
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  first_name: Kazi Omar
+  last_name: Faruk
+  phone: 01701029783
+  email: kaziomar@yopmail.com
+  items[0][variant_id]: 47795148423393
+  items[0][quantity]:  2
+  items[0][price]:  899.99
+  shipping_address[address1]:  House 12, Road 5, Dhanmondi
+  shipping_address[zip]: HA2 6AE
+  shipping_address[city]:  Dhaka
+  ~items[1][variant_id]:  205
+  ~items[1][quantity]:  1
+  ~items[1][price]:  1299
+}
+
+settings {
+  encodeUrl: true
+}

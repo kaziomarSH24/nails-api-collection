@@ -1,0 +1,33 @@
+meta {
+  name: todos list
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/todos
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~filter[date]: 2026-02-03
+  ~sort: -due_date
+  ~filter[is_completed]: true
+  ~"page ": 2
+  ~per_page: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  title: {{$randomLoremSentence}}
+  due_date: 2026-02-02 14:30:00
+  description: {{$randomLoremSentences}}
+}
+
+settings {
+  encodeUrl: true
+}

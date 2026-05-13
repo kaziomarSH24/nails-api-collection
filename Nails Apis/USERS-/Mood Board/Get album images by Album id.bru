@@ -1,0 +1,27 @@
+meta {
+  name: Get album images by Album id
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/v1/mood-boards/:moodId/images
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~per_page: 5
+}
+
+params:path {
+  moodId: 
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

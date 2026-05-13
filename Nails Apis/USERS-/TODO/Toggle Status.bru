@@ -1,0 +1,27 @@
+meta {
+  name: Toggle Status
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{base_url}}/v1/todos/:id/toggle?is_completed=false
+  body: none
+  auth: bearer
+}
+
+params:query {
+  is_completed: false
+}
+
+params:path {
+  id: 3
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

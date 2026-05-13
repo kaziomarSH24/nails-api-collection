@@ -1,0 +1,23 @@
+meta {
+  name: Update terms And condition
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/v1/admin/settings/terms
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  content: {{$randomLoremParagraphs}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,28 @@
+meta {
+  name: get inventory
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/inventory
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  item_name: {{$randomLoremSentence}}
+  source: external
+  linked_product_id: 
+  current_quantity: 5
+  reorder_threshold: 2
+  reminder_frequency_days: 15
+}
+
+settings {
+  encodeUrl: true
+}

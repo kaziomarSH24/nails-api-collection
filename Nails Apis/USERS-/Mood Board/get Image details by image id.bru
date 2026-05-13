@@ -1,0 +1,29 @@
+meta {
+  name: get Image details by image id
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{base_url}}/v1/mood-boards/images/details/:imageId
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  imageId: 2
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  mood_board_id: 2
+  images[]: @file(/C:/Users/kazio/Downloads/Linkedin cover for Omar faruk (1).jpg)
+  images[]: @file(/C:/Users/kazio/Downloads/WhatsApp Image 2025-11-25 at 6.07.11 PM.jpeg)
+}
+
+settings {
+  encodeUrl: true
+}

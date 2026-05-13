@@ -1,0 +1,29 @@
+meta {
+  name: Create Appointment
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/v1/appointments
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  client_name:  John Doe
+  client_phone:  +8801712345678
+  service_type:  Hair Cut & Styling
+  appointment_at:  2026-01-21 15:30:00
+  is_reminder_on:  1
+  notes:  First time client, prefers evening slot
+  ~reminder_minutes_before: 
+}
+
+settings {
+  encodeUrl: true
+}

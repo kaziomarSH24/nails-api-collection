@@ -1,0 +1,198 @@
+meta {
+  name: income report
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/admin/income-report
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~period: last_month
+  ~search: Test
+  ~start_date: 2026-01-01
+  ~end_date: 2026-01-31
+  ~per_page: 
+  ~page: 
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: income report
+  
+  request: {
+    url: {{base_url}}/v1/admin/income-report
+    method: GET
+    mode: none
+    params:query: {
+      ~period: last_month
+    }
+  }
+  
+  response: {
+    headers: {
+      Server: nginx/1.29.4
+      Content-Type: application/json
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      X-Powered-By: PHP/8.4.16
+      Cache-Control: no-cache, private
+      Date: Sun, 25 Jan 2026 10:47:02 GMT
+      X-RateLimit-Limit: 60
+      X-RateLimit-Remaining: 59
+      Access-Control-Allow-Origin: *
+      Content-Encoding: gzip
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "stats": {
+                "total_income": {
+                    "value": "22814.19",
+                    "growth": 1040.7
+                },
+                "product_income": {
+                    "value": "22431.22",
+                    "growth": 1021.6
+                },
+                "course_income": {
+                    "value": "382.97",
+                    "growth": 100
+                },
+                "total_transactions": {
+                    "value": 21,
+                    "growth": 950
+                }
+            },
+            "report": {
+                "data": [
+                    {
+                        "id": 42,
+                        "date": "Jan 24, 2026",
+                        "source": "Course",
+                        "item_name": "Sit molestias veniam",
+                        "user_name": "Test User Updated",
+                        "amount": "203.00",
+                        "status": "Success",
+                        "action_id": 42
+                    },
+                    {
+                        "id": 41,
+                        "date": "Jan 24, 2026",
+                        "source": "Shopify",
+                        "item_name": "Order #35",
+                        "user_name": "Test User Updated",
+                        "amount": "1,571.90",
+                        "status": "Success",
+                        "action_id": 41
+                    },
+                    {
+                        "id": 40,
+                        "date": "Jan 24, 2026",
+                        "source": "Shopify",
+                        "item_name": "Order #34",
+                        "user_name": "Test User Updated",
+                        "amount": "1,571.90",
+                        "status": "Success",
+                        "action_id": 40
+                    },
+                    {
+                        "id": 39,
+                        "date": "Jan 24, 2026",
+                        "source": "Shopify",
+                        "item_name": "Order #33",
+                        "user_name": "Test User Updated",
+                        "amount": "1,571.90",
+                        "status": "Success",
+                        "action_id": 39
+                    },
+                    {
+                        "id": 38,
+                        "date": "Jan 22, 2026",
+                        "source": "Shopify",
+                        "item_name": "Order #24",
+                        "user_name": "Test User Updated",
+                        "amount": "1,571.90",
+                        "status": "Success",
+                        "action_id": 38
+                    },
+                    {
+                        "id": 37,
+                        "date": "Jan 22, 2026",
+                        "source": "Shopify",
+                        "item_name": "Order #23",
+                        "user_name": "Test User Updated",
+                        "amount": "1,571.90",
+                        "status": "Success",
+                        "action_id": 37
+                    },
+                    {
+                        "id": 36,
+                        "date": "Jan 22, 2026",
+                        "source": "Course",
+                        "item_name": "Premium Workout Plan",
+                        "user_name": "Test User Updated",
+                        "amount": "39.99",
+                        "status": "Success",
+                        "action_id": 36
+                    },
+                    {
+                        "id": 35,
+                        "date": "Jan 22, 2026",
+                        "source": "Course",
+                        "item_name": "Premium Workout Plan",
+                        "user_name": "Test User Updated",
+                        "amount": "39.99",
+                        "status": "Success",
+                        "action_id": 35
+                    },
+                    {
+                        "id": 34,
+                        "date": "Jan 22, 2026",
+                        "source": "Course",
+                        "item_name": "Corrupti expedita h",
+                        "user_name": "Test User Updated",
+                        "amount": "30.00",
+                        "status": "Success",
+                        "action_id": 34
+                    },
+                    {
+                        "id": 33,
+                        "date": "Jan 22, 2026",
+                        "source": "Course",
+                        "item_name": "Corrupti expedita h",
+                        "user_name": "Test User Updated",
+                        "amount": "30.00",
+                        "status": "Success",
+                        "action_id": 33
+                    }
+                ],
+                "pagination": {
+                    "total": 21,
+                    "current_page": 1,
+                    "per_page": 10,
+                    "last_page": 3
+                }
+            }
+        }
+      '''
+    }
+  }
+}

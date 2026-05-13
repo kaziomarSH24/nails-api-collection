@@ -1,0 +1,19 @@
+meta {
+  name: Enroll course (See All)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/v1/course/enrolled
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

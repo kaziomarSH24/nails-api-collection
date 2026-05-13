@@ -1,0 +1,121 @@
+meta {
+  name: get course & Lessons by courseId
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/admin/courses/:courseId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  courseId: 33
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  # Update Course
+  
+  ## Overview
+  This endpoint updates an existing course in the system. It allows administrators to modify course details including title, description, pricing, reward points, and duration.
+  
+  ## Authentication
+  **Required:** Super Admin Token
+  
+  This endpoint requires authentication using a super admin token. The token should be included in the request headers (typically as `Authorization: Bearer {{super_adminToken}}`).
+  
+  ## Endpoint
+  ```
+  PUT {{baseIP_url}}/v1/admin/courses/:courseId
+  ```
+  
+  **Note:** This endpoint uses Laravel method spoofing. The actual HTTP method is `POST`, but includes `_method: PUT` in the form data to simulate a PUT request.
+  
+  ## Path Parameters
+  
+  | Parameter | Type | Required | Description |
+  |-----------|------|----------|-------------|
+  | `courseId` | integer | Yes | The unique identifier of the course to update |
+  
+  **Example:** `courseId: 1`
+  
+  ## Request Body Parameters
+  
+  **Content-Type:** `multipart/form-data`
+  
+  | Field | Type | Required | Description | Example |
+  |-------|------|----------|-------------|---------|
+  | `title` | string | Yes | The course title | "Premium Workout Plan" |
+  | `description` | string | Yes | Detailed description of the course | "Full body workout plan for beginners" |
+  | `price` | decimal | Yes | Course price in the system's currency | 39.99 |
+  | `reward_points` | integer | Yes | Points awarded upon course completion | 100 |
+  | `duration` | string | Yes | Estimated course duration | "5 hours" |
+  | `_method` | string | Yes | HTTP method override for Laravel (must be "PUT") | "PUT" |
+  
+  ## Response Format
+  
+  ### Success Response (200 OK)
+  
+  ```json
+  {
+    "data": {
+      "id": 1,
+      "title": "Premium Workout Plan",
+      "description": "Full body workout plan for beginners",
+      "thumbnail": "http://10.10.10.55:90/storage/courses/thumbnail_image.jpg",
+      "is_published": 0,
+      "created_at": "2026-01-15T05:15:53.000000Z",
+      "updated_at": "2026-01-15T05:39:37.000000Z"
+    },
+    "ok": true,
+    "message": "Course updated successfully."
+  }
+  ```
+  
+  ### Response Fields
+  
+  | Field | Type | Description |
+  |-------|------|-------------|
+  | `data.id` | integer | Unique course identifier |
+  | `data.title` | string | Updated course title |
+  | `data.description` | string | Updated course description |
+  | `data.thumbnail` | string | URL to the course thumbnail image |
+  | `data.is_published` | integer | Publication status (0 = unpublished, 1 = published) |
+  | `data.created_at` | timestamp | Original creation timestamp (ISO 8601 format) |
+  | `data.updated_at` | timestamp | Last update timestamp (ISO 8601 format) |
+  | `ok` | boolean | Indicates if the operation was successful |
+  | `message` | string | Human-readable success message |
+  
+  ## Important Notes
+  
+  1. **Method Spoofing:** The `_method` field with value "PUT" is required for Laravel's method spoofing. This allows the API to handle the request as a PUT operation while using POST as the actual HTTP method. This is necessary when working with multipart/form-data requests that need to simulate PUT behavior.
+  
+  2. **Multipart Form Data:** This endpoint uses `multipart/form-data` encoding, which is typically used when file uploads are involved (such as updating the course thumbnail).
+  
+  3. **Authorization:** Ensure the `super_adminToken` variable is set in your environment with a valid admin authentication token.
+  
+  4. **Partial Updates:** Check with your API documentation to confirm if partial updates are supported or if all fields must be provided.
+  
+  ## Example Request
+  
+  ```
+  POST {{baseIP_url}}/v1/admin/courses/1
+  Content-Type: multipart/form-data
+  
+  title: Premium Workout Plan
+  description: Full body workout plan for beginners
+  price: 39.99
+  reward_points: 100
+  duration: 5 hours
+  _method: PUT
+  ```
+}

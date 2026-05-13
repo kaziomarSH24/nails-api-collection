@@ -1,0 +1,31 @@
+meta {
+  name: monthly-status
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/daily-reflection/monthly-status?year=2026&month=2
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  year: 2026
+  month: 2
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  grateful_for: {{$randomLoremSentence}}
+  improvement_focus: {{$randomLoremSentence}}
+  inspired_by: {{$randomLoremSentence}}
+  weekly_progress: {{$randomLoremSentence}}
+}
+
+settings {
+  encodeUrl: true
+}

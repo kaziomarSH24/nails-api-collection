@@ -1,0 +1,19 @@
+meta {
+  name: List Payment Methods
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/payment/payment-methods
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Fetches a list of all saved payment methods (e.g., cards) for the user.
+}

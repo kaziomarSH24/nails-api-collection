@@ -1,0 +1,23 @@
+meta {
+  name: List Invoices
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/v1/payment/invoices
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Fetches a list of all invoices for the logged-in user.
+}

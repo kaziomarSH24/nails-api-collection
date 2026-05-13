@@ -1,0 +1,19 @@
+meta {
+  name: Set Default Payment Method
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{base_url}}/v1/payment/payment-methods/pm_.../set-default
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Sets a specific payment method as the default for future charges. Replace `pm_...` with the actual Payment Method ID.
+}

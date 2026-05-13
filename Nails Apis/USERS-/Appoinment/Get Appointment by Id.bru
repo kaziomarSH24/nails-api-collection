@@ -1,0 +1,23 @@
+meta {
+  name: Get Appointment by Id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/appointments/:appointmentId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  appointmentId: 5
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

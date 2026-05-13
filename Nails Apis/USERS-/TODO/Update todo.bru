@@ -1,0 +1,25 @@
+meta {
+  name: Update todo
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/v1/todos/1
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  title: {{$randomLoremSentence}}
+  due_date: 2026-02-01 14:30:00
+  description: {{$randomLoremSentences}}
+}
+
+settings {
+  encodeUrl: true
+}

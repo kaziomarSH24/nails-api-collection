@@ -1,0 +1,25 @@
+meta {
+  name: Delete Faq
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{base_url}}/v1/admin/settings/faqs/2
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  question: {{$randomLoremLines}}
+  answer: {{$randomLoremSentence}}
+  is_active: 1
+}
+
+settings {
+  encodeUrl: true
+}

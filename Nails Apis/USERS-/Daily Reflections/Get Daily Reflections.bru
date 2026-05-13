@@ -1,0 +1,30 @@
+meta {
+  name: Get Daily Reflections
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/daily-reflections?sort=-entry_date
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  sort: -entry_date
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  grateful_for: {{$randomLoremSentence}}
+  improvement_focus: {{$randomLoremSentence}}
+  inspired_by: {{$randomLoremSentence}}
+  weekly_progress: {{$randomLoremSentence}}
+}
+
+settings {
+  encodeUrl: true
+}

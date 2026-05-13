@@ -1,0 +1,19 @@
+meta {
+  name: save card intent
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/v1/payment/payment-methods/setup-intent
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

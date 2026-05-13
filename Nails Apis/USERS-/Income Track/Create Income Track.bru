@@ -1,0 +1,28 @@
+meta {
+  name: Create Income Track
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/finance-records
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  type:  expense
+  amount:  2500
+  category:  Project Payment
+  record_date:  2026-01-18
+  client_or_vendor_name:  ABC Corporation
+  notes:  January development payment
+}
+
+settings {
+  encodeUrl: true
+}

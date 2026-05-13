@@ -1,0 +1,29 @@
+meta {
+  name: Generate Report
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/v1/admin/income/generate-report?period=last_month&search=Test&format=pdf
+  body: none
+  auth: bearer
+}
+
+params:query {
+  period: last_month
+  search: Test
+  format: pdf
+  ~start_date: 2026-01-21
+  ~end_date: 2026-01-22
+  ~per_page: 
+  ~page: 
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

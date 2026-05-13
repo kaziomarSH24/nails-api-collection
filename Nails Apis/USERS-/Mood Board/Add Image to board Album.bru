@@ -1,0 +1,27 @@
+meta {
+  name: Add Image to board Album
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{base_url}}/v1/mood-boards/images/upload
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  title: sfsdfsdf
+  description: sdfsdfsdf
+  mood_board_id: 2
+  images[]: @file(/C:/Users/kazio/Downloads/Linkedin cover for Omar faruk (1).jpg|/C:/Users/tanvir/Downloads/success_7518748 1 (1).png)
+  ~images[]: @file(/C:/Users/kazio/Downloads/WhatsApp Image 2025-11-25 at 6.07.11 PM.jpeg)
+}
+
+settings {
+  encodeUrl: true
+}

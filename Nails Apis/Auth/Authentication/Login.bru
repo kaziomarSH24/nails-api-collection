@@ -1,0 +1,68 @@
+meta {
+  name: Login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/v1/auth/login
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  email: superadmin@yopmail.com
+  password: 11111111
+  ~fcm_token: your_device_fcm_token_here
+  ~email: user@yopmail.com
+  ~email: kaziomar1@yopmail.com
+}
+
+script:post-response {
+  try {
+      const jsonData = res.getBody();
+      console.log("Response data received:", jsonData); 
+  
+      if (jsonData && jsonData.data && jsonData.data.access_token) {
+          const token = jsonData.data.access_token;
+          const roles = jsonData.data.user.roles;
+  
+          if (roles && Array.isArray(roles) && roles.length > 0) {
+              roles.forEach(role => {
+                  if (role && role.name) {
+                      const roleName = role.name.toLowerCase();
+                      const varName = `${roleName}Token`; 
+                      
+  //                     pm.collectionVariables.set(varName, token);
+                      console.log(`Token saved for role '${role.name}'. Collection variable '${varName}' created.`);
+                  } else {
+                      console.warn("Found a role object without a 'name' property:", role);
+                  }
+              });
+          } else {
+              console.warn("No roles found for this user or roles is not a non-empty array. Response roles:", roles);
+          }
+      } else {
+          console.error("❌ No access token found in response path 'jsonData.data.access_token'.");
+      }
+  } catch (e) {
+      console.error("❌ Failed to parse JSON response or script error:", e);
+  }
+  
+  // Example Test
+  test("Successful login", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Logs in a user and returns an auth_token.
+}

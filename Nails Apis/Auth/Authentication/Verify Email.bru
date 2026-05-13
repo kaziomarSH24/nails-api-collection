@@ -1,0 +1,28 @@
+meta {
+  name: Verify Email
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/v1/auth/verify
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  email: kaziomar1@yopmail.com
+  otp: 128533
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Verifies a user's account with the OTP or token sent to their email and logs them in.
+}

@@ -1,0 +1,27 @@
+meta {
+  name: enroll course
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/v1/courses/:id/enroll
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  id: 33
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  points_to_redeem: 150
+}
+
+settings {
+  encodeUrl: true
+}

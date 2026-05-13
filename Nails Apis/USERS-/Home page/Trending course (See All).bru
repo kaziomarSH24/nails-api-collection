@@ -1,0 +1,19 @@
+meta {
+  name: Trending course (See All)
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{base_url}}/v1/course/trending
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

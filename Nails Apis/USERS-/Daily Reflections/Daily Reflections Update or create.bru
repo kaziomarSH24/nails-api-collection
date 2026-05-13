@@ -1,0 +1,26 @@
+meta {
+  name: Daily Reflections Update or create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/daily-reflections
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  grateful_for: {{$randomLoremSentence}}
+  improvement_focus: {{$randomLoremSentence}}
+  inspired_by: {{$randomLoremSentence}}
+  weekly_progress: {{$randomLoremSentence}}
+}
+
+settings {
+  encodeUrl: true
+}

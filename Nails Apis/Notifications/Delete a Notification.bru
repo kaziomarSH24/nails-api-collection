@@ -1,0 +1,23 @@
+meta {
+  name: Delete a Notification
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{base_url}}/api/v1/notifications/:notificatonID
+  body: none
+  auth: inherit
+}
+
+params:path {
+  notificatonID: 
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Deletes a specific notification. Replace `{{notification_id}}` with an actual notification UUID.
+}

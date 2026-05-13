@@ -1,0 +1,23 @@
+meta {
+  name: Get Notification Stats
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/v1/notifications/stats
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Get the count of unread notifications for the authenticated user.
+}

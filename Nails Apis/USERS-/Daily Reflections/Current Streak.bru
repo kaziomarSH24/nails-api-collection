@@ -1,0 +1,26 @@
+meta {
+  name: Current Streak
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{base_url}}/v1/daily-reflection/current-streak
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  grateful_for: {{$randomLoremSentence}}
+  improvement_focus: {{$randomLoremSentence}}
+  inspired_by: {{$randomLoremSentence}}
+  weekly_progress: {{$randomLoremSentence}}
+}
+
+settings {
+  encodeUrl: true
+}

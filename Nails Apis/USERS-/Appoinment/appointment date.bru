@@ -1,0 +1,34 @@
+meta {
+  name: appointment date
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/v1/appointment/yearly-status?year=2026&month=1
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  year: 2026
+  month: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  client_name:  John Doe
+  client_phone:  +8801712345678
+  service_type:  Hair Cut & Styling
+  appointment_at:  2026-01-21 15:30:00
+  is_reminder_on:  1
+  notes:  First time client, prefers evening slot
+  ~reminder_minutes_before: 
+}
+
+settings {
+  encodeUrl: true
+}

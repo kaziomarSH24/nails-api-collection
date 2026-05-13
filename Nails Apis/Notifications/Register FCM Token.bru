@@ -1,0 +1,28 @@
+meta {
+  name: Register FCM Token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/v1/fcm/register
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{auth_token}}
+}
+
+body:multipart-form {
+  token: your_mobile_device_fcm_token
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Registers a mobile device's token to receive push notifications.
+}

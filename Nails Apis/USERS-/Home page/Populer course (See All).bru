@@ -1,0 +1,19 @@
+meta {
+  name: Populer course (See All)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/course/popular
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

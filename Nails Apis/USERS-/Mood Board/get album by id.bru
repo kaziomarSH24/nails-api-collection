@@ -1,0 +1,23 @@
+meta {
+  name: get album by id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/mood-boards/:albumId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  albumId: 2
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

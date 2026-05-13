@@ -1,0 +1,23 @@
+meta {
+  name: restock Status
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{base_url}}/v1/inventory/:id/restock
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

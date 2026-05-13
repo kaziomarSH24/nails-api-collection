@@ -1,0 +1,31 @@
+meta {
+  name: Update contact-info
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{base_url}}/v1/admin/settings/contact-info
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  social_links[0][platform]:  facebookS
+  social_links[0][icon]: @file(/C:/Users/bdCalling/Downloads/course.jpg)
+  social_links[0][url]:  https://facebook.com/kaziomarsh24
+  ~social_links[1][platform]:  instagrams
+  ~social_links[1][icon]: @file(/C:/Users/kazio/Downloads/Linkedin cover for Omar faruk (1).jpg)
+  ~social_links[1][url]:  https://instagram.com/yourprofile
+  ~social_links[2][platform]:  linkedin
+  ~social_links[2][icon]: @file(/C:/Users/kazio/OneDrive/Pictures/image_2.jpg)
+  ~social_links[2][url]:  https://linkedin.com/in/yourname
+}
+
+settings {
+  encodeUrl: true
+}

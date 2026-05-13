@@ -1,0 +1,28 @@
+meta {
+  name: Get All Product
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/admin/products/?sort=-created_at&group_by_category=1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  sort: -created_at
+  group_by_category: 1
+  ~per_page: 
+  ~filter[title]: The Complete
+  ~variants: 1
+  ~category_name: snowboard
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Mark One Notification as Read
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/v1/notifications/131637fe-fb24-4a10-b2d6-aa18367d4764/mark-as-read
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Marks a single notification as read. Replace `{{notification_id}}` with an actual notification UUID.
+}
