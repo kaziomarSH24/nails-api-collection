@@ -1,0 +1,20 @@
+meta {
+  name: privacy policy
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{base_url}}/v1/admin/settings/privacy-policy
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
