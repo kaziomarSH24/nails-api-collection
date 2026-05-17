@@ -1,0 +1,19 @@
+meta {
+  name: Get Support Ticket
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v1/admin/settings/support/tickets
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Update Support Ticket Status
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{base_url}}/v1/admin/settings/support/tickets/:id/status
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{super_adminToken}}
+}
+
+body:multipart-form {
+  status: open
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
